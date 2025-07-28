@@ -1,0 +1,159 @@
+:root {
+  --safe-area-inset-bottom: calc(100vh - var(--tg-viewport-stable-height, 100vh));
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* --- 1. Основной контейнер приложения --- */
+#app {
+  height: var(--tg-viewport-stable-height, 100vh);
+  width: 100%;
+  position: relative; /* Включаем позиционирование для дочерних элементов */
+  overflow: hidden;
+  
+  /* ДРУЖЕЛЮБНЫЙ ГРАДИЕНТНЫЙ ФОН */
+  background: linear-gradient(135deg, #e8f5e8 0%, #b8e6d3 30%, #87ceeb 70%, #b8dcf5 100%);
+  color: #2d5a4d;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* --- 2. Контент (заголовок, текст) --- */
+.content-wrapper {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* --- 3. Изображение (позиционируем отдельно) --- */
+.screen-image {
+    position: absolute;
+    bottom: 100px; /* Расстояние от низа до изображения */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 60%;
+    max-height: 50vh; /* Ограничиваем высоту чтобы не залезали на текст */
+    object-fit: contain;
+    z-index: 0;
+}
+
+/* --- 4. Кнопка (жёстко фиксируем к низу) --- */
+.main-button {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 90%;
+    max-width: 400px;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    
+    z-index: 10; /* Кнопка всегда НАД всем */
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+    cursor: pointer;
+    
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.main-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* --- Остальные стили --- */
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    text-shadow: 0 2px 8px rgba(45, 90, 77, 0.2);
+}
+.description {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 450px;
+    color: rgba(45, 90, 77, 0.8);
+    margin: 0;
+}
+.progress-bar-container {
+    width: 90%;
+    max-width: 400px;
+    height: 8px;
+    background-color: rgba(45, 90, 77, 0.2);
+    border-radius: 4px;
+    margin-bottom: 25px;
+    margin-left: 5%;
+}
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #66BB6A);
+    border-radius: 3px;
+}
+
+/* Стили пейвола */
+#app.paywall {
+    justify-content: flex-start;
+}
+.tariffs {
+    width: 90%;
+    max-width: 400px;
+    margin-top: 20px;
+    text-align: center;
+}
+.tariff {
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 12px;
+    padding: 14px 15px;
+    margin-bottom: 12px;
+    position: relative;
+    color: #2d5a4d;
+}
+.tariff.selected {
+    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+.tariff-row {
+    display: flex; /* Делаем элементы внутри ряда гибкими */
+    gap: 10px;     /* Добавляем отступ между карточками */
+}
+
+.tariff-row .tariff {
+    flex: 1;       /* Каждая карточка в ряду занимает равное пространство */
+    padding: 7px 7.5px; /* Уменьшенные пэддинги для карточек месяц/неделя */
+}
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
