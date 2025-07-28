@@ -45,7 +45,7 @@ html, body {
     transform: translateX(-50%);
     
     width: 60%;
-    max-height: 50vh; /* Ограничиваем высоту чтобы не залезали на текст */
+    max-height: 35vh; /* Ограничиваем высоту чтобы не залезали на текст */
     object-fit: contain;
     z-index: 0;
 }
